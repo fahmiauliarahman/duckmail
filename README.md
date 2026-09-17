@@ -37,7 +37,7 @@ npx duckmail
 
 ```sh
 npx duckmail           # generate one address
-npx duckmail 5         # generate five addresses
+npx duckmail 5         # generate five addresses (max 10 per run)
 npx duckmail logout    # remove the saved token
 npx duckmail --help
 ```
@@ -86,7 +86,7 @@ On Linux, install one of those tools to enable copying. Without one, the address
 The command exits with a non-zero status when:
 
 - no token is found
-- the count isn't a positive integer
+- the count isn't a positive integer or is greater than 10
 - the API request fails (for example, the token is invalid or expired)
 - the response doesn't contain an address
 
@@ -102,6 +102,14 @@ cd duck-mail-generator
 cp .env.example .env    # add your token
 node generate.js
 ```
+
+### Tests
+
+```sh
+npm test
+```
+
+Tests use Node's built-in test runner and a local mock server, so they never call the real DuckDuckGo API or create real addresses.
 
 ### Publishing
 

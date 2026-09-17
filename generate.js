@@ -6,12 +6,15 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 import { createInterface } from "node:readline/promises";
 
-const API_URL = "https://quack.duckduckgo.com/api/email/addresses";
+// Overridable so tests can point at a local mock server.
+const API_URL =
+  process.env.DUCKMAIL_API_URL ?? "https://quack.duckduckgo.com/api/email/addresses";
+const MAX_COUNT = 10;
 
 const HELP = `Generate DuckDuckGo private email addresses (@duck.com).
 
 Usage:
-  duckmail [count]    Generate addresses (default: 1)
+  duckmail [count]    Generate addresses (default: 1, max: ${MAX_COUNT})
   duckmail login      Save your bearer token
   duckmail logout     Remove the saved token
   duckmail --help     Show this help
@@ -131,6 +134,9 @@ function copyToClipboard(text) {
 async function generate(countArg = "1") {
   if (!/^[1-9]\d*$/.test(countArg)) {
     fail("count must be a positive integer");
+  }
+  if (Number(countArg) > MAX_COUNT) {
+    fail(`count must be ${MAX_COUNT} or less`);
   }
 
   const token = resolveToken();

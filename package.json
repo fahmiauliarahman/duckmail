@@ -19,7 +19,8 @@
     "generate.js"
   ],
   "scripts": {
-    "generate": "node generate.js"
+    "generate": "node generate.js",
+    "test": "node --test"
   },
   "engines": {
     "node": ">=20.12"

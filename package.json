@@ -1,0 +1,28 @@
+{
+  "name": "duckmail",
+  "version": "1.0.0",
+  "description": "Generate DuckDuckGo private email addresses (@duck.com) from the command line",
+  "author": "Fahmi Aulia Rahman <fahmiar@duck.com>",
+  "keywords": [
+    "duckduckgo",
+    "duck",
+    "email",
+    "email-protection",
+    "alias",
+    "cli"
+  ],
+  "type": "module",
+  "bin": {
+    "duckmail": "generate.js"
+  },
+  "files": [
+    "generate.js"
+  ],
+  "scripts": {
+    "generate": "node generate.js"
+  },
+  "engines": {
+    "node": ">=20.12"
+  },
+  "license": "MIT"
+}

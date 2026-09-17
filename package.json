@@ -1,6 +1,6 @@
 {
   "name": "duckmail",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate DuckDuckGo private email addresses (@duck.com) from the command line",
   "author": "Fahmi Aulia Rahman <fahmiar@duck.com>",
   "keywords": [
